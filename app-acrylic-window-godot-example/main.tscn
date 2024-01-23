@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://cai14k05saksp"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_71il2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_71il2")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.388235, 0.388235, 0.388235, 1)
+
+[node name="SettingsGrid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = -39.0
+offset_right = -20.0
+offset_bottom = 155.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="ColorLabel" type="Label" parent="SettingsGrid"]
+layout_mode = 2
+text = "Color"
+
+[node name="ColorButton" type="ColorPickerButton" parent="SettingsGrid"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="FrameLabel" type="Label" parent="SettingsGrid"]
+layout_mode = 2
+text = "Custom Frame"
+
+[node name="FrameButton" type="CheckButton" parent="SettingsGrid"]
+layout_mode = 2
+
+[node name="BackdropLabel" type="Label" parent="SettingsGrid"]
+layout_mode = 2
+text = "Backdrop"
+
+[node name="BackdropButton" type="OptionButton" parent="SettingsGrid"]
+layout_mode = 2
+
+[connection signal="color_changed" from="SettingsGrid/ColorButton" to="." method="_on_color_button_color_changed"]
+[connection signal="toggled" from="SettingsGrid/FrameButton" to="." method="_on_frame_button_toggled"]
+[connection signal="item_selected" from="SettingsGrid/BackdropButton" to="." method="_on_backdrop_button_item_selected"]
